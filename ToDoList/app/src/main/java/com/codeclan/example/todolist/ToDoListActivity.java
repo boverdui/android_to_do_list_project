@@ -42,6 +42,18 @@ public class ToDoListActivity extends AppCompatActivity {
 
     }
 
+    public void onClickDeleteButton(View listItem){
+
+        Task selectedTask = (Task) listItem.getTag();
+
+        TaskDbHelper taskDbHelper = new TaskDbHelper(this);
+
+        Integer id = selectedTask.getID();
+
+        taskDbHelper.deleteTask(id);
+
+    }
+
     public void onClickAddButton(View view){
         Intent intent = new Intent(this, AddTaskActivity.class);
         startActivity(intent);

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,7 +30,12 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         }
 
         TextView name = listItemView.findViewById(R.id.textView_name);
-        name.setText(currentTask.getName().toString());
+        name.setText(currentTask.getName());
+
+        ImageView image = listItemView.findViewById(R.id.imageView_status);
+        if (currentTask.getStatus().equals("not completed")) {
+            image.setImageResource(R.drawable.check);
+        }
 
         listItemView.setTag(currentTask);
 

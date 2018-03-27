@@ -33,7 +33,7 @@ public class TaskDbHelper extends DbHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("select * from "+ DbContract.Entry.TABLE_NAME,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DbContract.Entry.TABLE_NAME,null);
 
         ArrayList<Task> tasks = new ArrayList<>();
 
@@ -59,6 +59,14 @@ public class TaskDbHelper extends DbHelper {
         cursor.close();
 
         return tasks;
+
+    }
+
+    public void deleteTask(Integer id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.rawQuery("DELETE FROM " + DbContract.Entry.TABLE_NAME + " WHERE _ID = " + id);
 
     }
 
