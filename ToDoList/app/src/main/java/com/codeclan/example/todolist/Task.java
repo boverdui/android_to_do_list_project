@@ -8,18 +8,25 @@ import java.io.Serializable;
 
 public class Task implements Serializable {
 
-    private int id;
+    private Integer id;
     private String name;
     private String description;
-    private int completed;
+    private String status;
 
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
-        this.completed = 0;
+        this.status = "not completed";
     }
 
-    public int getId() {
+    public Task(Integer id, String name, String description, String status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Integer getId() {
         return id;
     }
 
@@ -31,8 +38,8 @@ public class Task implements Serializable {
         return description;
     }
 
-    public int getCompleted() {
-        return completed;
+    public String getStatus() {
+        return status;
     }
 
 }
