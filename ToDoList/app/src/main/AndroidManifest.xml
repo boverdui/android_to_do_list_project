@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddTaskActivity"></activity>
-        <activity android:name=".TaskActivity"></activity>
+        <activity android:name=".AddTaskActivity" android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".TaskActivity" android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>
