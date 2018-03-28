@@ -13,22 +13,22 @@ public final class DbContract {
 
     private DbContract() {}
 
-    public static abstract class Entry implements BaseColumns {
+    public static abstract class Tasks implements BaseColumns {
 
-        public static final String TABLE_NAME = "tasks";
-        public static final String COL_1 = "name";
-        public static final String COL_2 = "description";
-        public static final String COL_3 = "status";
+        public static final String TABLE_TASKS = "tasks";
+        public static final String COL_NAME = "name";
+        public static final String COL_DESCRIPTION = "description";
+        public static final String COL_STATUS = "status";
 
 
         public static final String CREATE_TABLE =
-                "CREATE TABLE " + Entry.TABLE_NAME + " (" +
-                        Entry._ID + " INTEGER PRIMARY KEY," +
-                        Entry.COL_1 + " TEXT," +
-                        Entry.COL_2 + " TEXT," +
-                        Entry.COL_3 + " TEXT)";
+                "CREATE TABLE " + Tasks.TABLE_TASKS + " (" +
+                        Tasks._ID + " INTEGER PRIMARY KEY," +
+                        Tasks.COL_NAME + " TEXT," +
+                        Tasks.COL_DESCRIPTION + " TEXT," +
+                        Tasks.COL_STATUS + " TEXT)";
 
-        public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + Entry.TABLE_NAME;
+        public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + Tasks.TABLE_TASKS;
 
     }
 

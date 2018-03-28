@@ -16,8 +16,8 @@ public class AddTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
-        editName = (EditText) findViewById(R.id.editText_name);
-        editDescription = (EditText) findViewById(R.id.editText_description);
+        editName = findViewById(R.id.editText_name);
+        editDescription = findViewById(R.id.editText_description);
     }
 
     public void onClickAddButton(View view) {
@@ -28,13 +28,13 @@ public class AddTaskActivity extends AppCompatActivity {
         Task task = new Task(name, description);
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
 
-        if (name.length() == 0 || description.length() == 0) {
-            Toast.makeText(this, "You have to fill in both fields!", Toast.LENGTH_LONG).show();
+        if (name.length() == 0) {
+            Toast.makeText(this, "Task cannot be empty", Toast.LENGTH_LONG).show();
         } else {
             taskDbHelper.addTask(task);
             editName.setText(null);
             editDescription.setText(null);
-            Toast.makeText(this, "Your task has been added", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Task added", Toast.LENGTH_LONG).show();
         }
 
     }

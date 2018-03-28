@@ -21,13 +21,13 @@ public class TaskDbHelper extends DbHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
+        ContentValues contentvalues = new ContentValues();
 
-        values.put(DbContract.Entry.COL_1, task.getName());
-        values.put(DbContract.Entry.COL_2, task.getDescription());
-        values.put(DbContract.Entry.COL_3, task.getStatus());
+        contentvalues.put(DbContract.Tasks.COL_NAME, task.getName());
+        contentvalues.put(DbContract.Tasks.COL_DESCRIPTION, task.getDescription());
+        contentvalues.put(DbContract.Tasks.COL_STATUS, task.getStatus());
 
-        db.insert(DbContract.Entry.TABLE_NAME, null, values);
+        db.insert(DbContract.Tasks.TABLE_TASKS,null, contentvalues);
 
     }
 
@@ -35,22 +35,32 @@ public class TaskDbHelper extends DbHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DbContract.Entry.TABLE_NAME,null);
+        String[] projection = {
+                DbContract.Tasks._ID,
+                DbContract.Tasks.COL_NAME,
+                DbContract.Tasks.COL_DESCRIPTION,
+                DbContract.Tasks.COL_STATUS
+        };
+
+        Cursor cursor = db.query(
+                DbContract.Tasks.TABLE_TASKS, projection,null,null,null,null,null
+        );
+
 
         ArrayList<Task> tasks = new ArrayList<>();
 
         if (cursor.moveToFirst()) do {
 
-            Integer idIndex = cursor.getColumnIndex(DbContract.Entry._ID);
+            Integer idIndex = cursor.getColumnIndex(DbContract.Tasks._ID);
             Integer id = cursor.getInt(idIndex);
 
-            Integer nameIndex = cursor.getColumnIndex(DbContract.Entry.COL_1);
+            Integer nameIndex = cursor.getColumnIndex(DbContract.Tasks.COL_NAME);
             String name = cursor.getString(nameIndex);
 
-            Integer descriptionIndex = cursor.getColumnIndex(DbContract.Entry.COL_2);
+            Integer descriptionIndex = cursor.getColumnIndex(DbContract.Tasks.COL_DESCRIPTION);
             String description = cursor.getString(descriptionIndex);
 
-            Integer statusIndex = cursor.getColumnIndex(DbContract.Entry.COL_3);
+            Integer statusIndex = cursor.getColumnIndex(DbContract.Tasks.COL_STATUS);
             String status = cursor.getString(statusIndex);
 
             Task task = new Task(id, name, description, status);
@@ -69,10 +79,10 @@ public class TaskDbHelper extends DbHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String whereClause = DbContract.Entry._ID + " = ?";
+        String whereClause = DbContract.Tasks._ID + " = ?";
         String[] whereArgs = { task.getId().toString() };
 
-        db.delete(DbContract.Entry.TABLE_NAME, whereClause, whereArgs);
+        db.delete(DbContract.Tasks.TABLE_TASKS, whereClause, whereArgs);
 
     }
 
@@ -82,15 +92,16 @@ public class TaskDbHelper extends DbHelper {
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(DbContract.Entry._ID, task.getId());
-        contentValues.put(DbContract.Entry.COL_1, task.getName());
-        contentValues.put(DbContract.Entry.COL_2, task.getDescription());
-        contentValues.put(DbContract.Entry.COL_3, task.getStatus());
+        contentValues.put(DbContract.Tasks._ID, task.getId());
+        contentValues.put(DbContract.Tasks.COL_NAME, task.getName());
+        contentValues.put(DbContract.Tasks.COL_DESCRIPTION, task.getDescription());
+        contentValues.put(DbContract.Tasks.COL_STATUS, task.getStatus());
 
-        String whereClause = DbContract.Entry._ID + " = ?";
+        String whereClause = DbContract.Tasks._ID + " = ?";
+
         String[] whereArgs = { task.getId().toString() };
 
-        db.update(DbContract.Entry.TABLE_NAME, contentValues, whereClause, whereArgs);
+        db.update(DbContract.Tasks.TABLE_TASKS, contentValues, whereClause, whereArgs);
 
     }
 

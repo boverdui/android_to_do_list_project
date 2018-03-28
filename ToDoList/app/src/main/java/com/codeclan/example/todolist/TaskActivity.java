@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class TaskActivity extends AppCompatActivity {
@@ -55,7 +54,7 @@ public class TaskActivity extends AppCompatActivity {
 
     }
 
-    public void onClickStatusButton(View view) {
+    public void onClickUpdateButton(View view) {
 
         id = selectedTask.getId();
         name = nameEditText.getText().toString();
@@ -71,11 +70,12 @@ public class TaskActivity extends AppCompatActivity {
 
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
 
-        if (name.length() == 0 || description.length() == 0) {
-            Toast.makeText(this, "You have to fill in both fields!", Toast.LENGTH_LONG).show();
+        if (name.length() == 0) {
+            Toast.makeText(this, "Task cannot be empty", Toast.LENGTH_LONG).show();
         } else {
             taskDbHelper.updateTask(task);
-            Toast.makeText(this, "Your task has been updated", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Task updated", Toast.LENGTH_LONG).show();
+            finish();
         }
 
     }
