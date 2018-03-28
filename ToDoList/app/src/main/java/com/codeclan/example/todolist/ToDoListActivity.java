@@ -31,7 +31,7 @@ public class ToDoListActivity extends AppCompatActivity {
         listView.setAdapter(taskAdapter);
     }
 
-    public void onListItemClick(View listItem){
+    public void onListItemClick(View listItem) {
 
         Task selectedTask = (Task) listItem.getTag();
 
@@ -39,18 +39,6 @@ public class ToDoListActivity extends AppCompatActivity {
         intent.putExtra("task", selectedTask);
 
         startActivity(intent);
-
-    }
-
-    public void onClickDeleteButton(View listItem){
-
-        Task selectedTask = (Task) listItem.getTag();
-
-        TaskDbHelper taskDbHelper = new TaskDbHelper(this);
-
-        Integer id = selectedTask.getID();
-
-        taskDbHelper.deleteTask(id);
 
     }
 

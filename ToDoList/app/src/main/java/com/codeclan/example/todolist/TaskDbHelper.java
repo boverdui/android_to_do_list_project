@@ -39,7 +39,8 @@ public class TaskDbHelper extends DbHelper {
 
         if (cursor.moveToFirst()) do {
 
-            Integer id = cursor.getColumnIndex(DbContract.Entry._ID);
+            Integer idIndex = cursor.getColumnIndex(DbContract.Entry._ID);
+            Integer id = cursor.getInt(idIndex);
 
             Integer nameIndex = cursor.getColumnIndex(DbContract.Entry.COL_1);
             String name = cursor.getString(nameIndex);
@@ -62,11 +63,14 @@ public class TaskDbHelper extends DbHelper {
 
     }
 
-    public void deleteTask(Integer id) {
+    public void deleteTask(Task task) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        db.rawQuery("DELETE FROM " + DbContract.Entry.TABLE_NAME + " WHERE _ID = " + id);
+        String selection = DbContract.Entry._ID + " = ?";
+        String[] selectionArgs = { task.getId().toString() };
+
+        db.delete(DbContract.Entry.TABLE_NAME, selection, selectionArgs);
 
     }
 
