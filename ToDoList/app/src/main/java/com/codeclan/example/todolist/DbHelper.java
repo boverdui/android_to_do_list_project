@@ -11,18 +11,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
 
     public DbHelper(Context context) {
+
         super(context, DbContract.DATABASE_NAME, null, DbContract.DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(DbContract.Tasks.CREATE_TABLE);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL(DbContract.Tasks.DELETE_TABLE);
         onCreate(db);
+
     }
 
 }

@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class TaskDbHelper extends DbHelper {
 
     public TaskDbHelper (Context context) {
+
         super(context);
+
     }
 
     public void addTask(Task task) {
@@ -36,14 +38,18 @@ public class TaskDbHelper extends DbHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String[] projection = {
+
                 DbContract.Tasks._ID,
                 DbContract.Tasks.COL_NAME,
                 DbContract.Tasks.COL_DESCRIPTION,
                 DbContract.Tasks.COL_STATUS
+
         };
 
         Cursor cursor = db.query(
+
                 DbContract.Tasks.TABLE_TASKS, projection,null,null,null,null,null
+
         );
 
 
@@ -80,6 +86,7 @@ public class TaskDbHelper extends DbHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String whereClause = DbContract.Tasks._ID + " = ?";
+
         String[] whereArgs = { task.getId().toString() };
 
         db.delete(DbContract.Tasks.TABLE_TASKS, whereClause, whereArgs);

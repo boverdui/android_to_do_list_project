@@ -13,6 +13,7 @@ public class TaskActivity extends AppCompatActivity {
     EditText nameEditText;
     EditText descriptionEditText;
     CheckBox statusCheckBox;
+
     Task selectedTask;
 
     Integer id;
@@ -22,9 +23,11 @@ public class TaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_task);
 
         Intent intent = getIntent();
+
         selectedTask = (Task) intent.getSerializableExtra("task");
 
         nameEditText = findViewById(R.id.editText_name);
@@ -34,10 +37,15 @@ public class TaskActivity extends AppCompatActivity {
         descriptionEditText.setText(selectedTask.getDescription());
 
         statusCheckBox = findViewById(R.id.checkBox_status);
+
         if (selectedTask.getStatus().equals("completed")) {
+
             statusCheckBox.setChecked(true);
+
         } else {
+
             statusCheckBox.setChecked(false);
+
         }
 
     }
@@ -59,11 +67,16 @@ public class TaskActivity extends AppCompatActivity {
         id = selectedTask.getId();
         name = nameEditText.getText().toString();
         description = descriptionEditText.getText().toString();
+
         if (statusCheckBox.isChecked()) {
+
             status = "completed";
+
         }
         else {
+
             status = "not completed";
+
         }
 
         Task task = new Task(id, name, description, status);
@@ -71,11 +84,17 @@ public class TaskActivity extends AppCompatActivity {
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
 
         if (name.length() == 0) {
+
             Toast.makeText(this, "Task cannot be empty", Toast.LENGTH_LONG).show();
+
         } else {
+
             taskDbHelper.updateTask(task);
+
             Toast.makeText(this, "Task updated", Toast.LENGTH_LONG).show();
+
             finish();
+
         }
 
     }

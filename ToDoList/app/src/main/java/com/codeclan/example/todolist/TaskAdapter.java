@@ -26,15 +26,21 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         Task currentTask = getItem(position);
 
         if (listItemView == null) {
+
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.task_item, parent, false);
+
         }
 
         TextView name = listItemView.findViewById(R.id.textView_name);
+
         name.setText(currentTask.getName());
 
         ImageView image = listItemView.findViewById(R.id.imageView_status);
+
         if (currentTask.getStatus().equals("completed")) {
+
             image.setImageResource(R.drawable.check);
+
         }
 
         listItemView.setTag(currentTask);

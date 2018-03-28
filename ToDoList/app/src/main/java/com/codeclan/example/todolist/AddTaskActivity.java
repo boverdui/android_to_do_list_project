@@ -13,11 +13,14 @@ public class AddTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_task);
 
         editName = findViewById(R.id.editText_name);
         editDescription = findViewById(R.id.editText_description);
+
     }
 
     public void onClickAddButton(View view) {
@@ -26,15 +29,22 @@ public class AddTaskActivity extends AppCompatActivity {
         description = editDescription.getText().toString();
 
         Task task = new Task(name, description);
+
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
 
         if (name.length() == 0) {
+
             Toast.makeText(this, "Task cannot be empty", Toast.LENGTH_LONG).show();
+
         } else {
+
             taskDbHelper.addTask(task);
+
             editName.setText(null);
             editDescription.setText(null);
+
             Toast.makeText(this, "Task added", Toast.LENGTH_LONG).show();
+
         }
 
     }
