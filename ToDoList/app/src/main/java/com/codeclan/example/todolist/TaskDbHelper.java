@@ -20,10 +20,12 @@ public class TaskDbHelper extends DbHelper {
     public void addTask(Task task) {
 
         SQLiteDatabase db = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
+
         values.put(DbContract.Entry.COL_1, task.getName());
         values.put(DbContract.Entry.COL_2, task.getDescription());
-        values.put(DbContract.Entry.COL_3, "not completed");
+        values.put(DbContract.Entry.COL_3, task.getStatus());
 
         db.insert(DbContract.Entry.TABLE_NAME, null, values);
 
@@ -67,10 +69,28 @@ public class TaskDbHelper extends DbHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String selection = DbContract.Entry._ID + " = ?";
-        String[] selectionArgs = { task.getId().toString() };
+        String whereClause = DbContract.Entry._ID + " = ?";
+        String[] whereArgs = { task.getId().toString() };
 
-        db.delete(DbContract.Entry.TABLE_NAME, selection, selectionArgs);
+        db.delete(DbContract.Entry.TABLE_NAME, whereClause, whereArgs);
+
+    }
+
+    public void updateTask(Task task) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DbContract.Entry._ID, task.getId());
+        contentValues.put(DbContract.Entry.COL_1, task.getName());
+        contentValues.put(DbContract.Entry.COL_2, task.getDescription());
+        contentValues.put(DbContract.Entry.COL_3, task.getStatus());
+
+        String whereClause = DbContract.Entry._ID + " = ?";
+        String[] whereArgs = { task.getId().toString() };
+
+        db.update(DbContract.Entry.TABLE_NAME, contentValues, whereClause, whereArgs);
 
     }
 

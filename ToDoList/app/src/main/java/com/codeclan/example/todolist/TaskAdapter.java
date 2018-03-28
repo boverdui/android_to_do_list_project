@@ -33,7 +33,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         name.setText(currentTask.getName());
 
         ImageView image = listItemView.findViewById(R.id.imageView_status);
-        if (currentTask.getStatus().equals("not completed")) {
+        if (currentTask.getStatus().equals("completed")) {
             image.setImageResource(R.drawable.check);
         }
 

@@ -4,14 +4,20 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TaskActivity extends AppCompatActivity {
 
-    TextView nameTextView;
-    TextView descriptionTextView;
-    TextView statusTextView;
+    EditText nameEditText;
+    EditText descriptionEditText;
+    CheckBox statusCheckBox;
     Task selectedTask;
+
+    Integer id;
+    String name, description, status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +28,18 @@ public class TaskActivity extends AppCompatActivity {
         Intent intent = getIntent();
         selectedTask = (Task) intent.getSerializableExtra("task");
 
-        nameTextView = (TextView) findViewById(R.id.textView_name);
-        nameTextView.setText(selectedTask.getName());
+        nameEditText = findViewById(R.id.editText_name);
+        nameEditText.setText(selectedTask.getName());
 
-        descriptionTextView = (TextView) findViewById(R.id.textView_description);
-        descriptionTextView.setText(selectedTask.getDescription());
+        descriptionEditText = findViewById(R.id.editText_description);
+        descriptionEditText.setText(selectedTask.getDescription());
 
-        statusTextView = (TextView) findViewById(R.id.textView_status);
-        statusTextView.setText(selectedTask.getStatus());
+        statusCheckBox = findViewById(R.id.checkBox_status);
+        if (selectedTask.getStatus().equals("completed")) {
+            statusCheckBox.setChecked(true);
+        } else {
+            statusCheckBox.setChecked(false);
+        }
 
     }
 
@@ -39,7 +49,34 @@ public class TaskActivity extends AppCompatActivity {
 
         taskDbHelper.deleteTask(selectedTask);
 
+        Toast.makeText(this, "Task deleted", Toast.LENGTH_LONG).show();
+
         finish();
+
+    }
+
+    public void onClickStatusButton(View view) {
+
+        id = selectedTask.getId();
+        name = nameEditText.getText().toString();
+        description = descriptionEditText.getText().toString();
+        if (statusCheckBox.isChecked()) {
+            status = "completed";
+        }
+        else {
+            status = "not completed";
+        }
+
+        Task task = new Task(id, name, description, status);
+
+        TaskDbHelper taskDbHelper = new TaskDbHelper(this);
+
+        if (name.length() == 0 || description.length() == 0) {
+            Toast.makeText(this, "You have to fill in both fields!", Toast.LENGTH_LONG).show();
+        } else {
+            taskDbHelper.updateTask(task);
+            Toast.makeText(this, "Your task has been updated", Toast.LENGTH_LONG).show();
+        }
 
     }
 
