@@ -40,9 +40,11 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         if (currentTask.getStatus().equals("completed")) {
 
             statusCheckBox.setChecked(true);
+            statusCheckBox.setVisibility(View.VISIBLE);
 
         } else {
 
+            statusCheckBox.setChecked(false);
             statusCheckBox.setVisibility(View.INVISIBLE);
 
         }

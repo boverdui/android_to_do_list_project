@@ -13,7 +13,7 @@
         tools:context="com.codeclan.example.todolist.TaskActivity">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView_task"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
@@ -21,7 +21,7 @@
             android:layout_marginTop="24dp"
             android:background="@color/colorPrimary"
             android:gravity="center|center_vertical"
-            android:text="TASK"
+            android:text="@string/header_task"
             android:textAlignment="gravity"
             android:textColor="@android:color/white"
             android:textSize="16sp"
@@ -41,10 +41,10 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_task" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_description"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginEnd="8dp"
@@ -52,7 +52,7 @@
             android:layout_marginTop="24dp"
             android:background="@color/colorPrimary"
             android:gravity="center|center_vertical"
-            android:text="DESCRIPTION"
+            android:text="@string/header_description"
             android:textAlignment="gravity"
             android:textColor="@android:color/white"
             android:textSize="16sp"
@@ -72,7 +72,7 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_description" />
 
         <CheckBox
             android:id="@+id/checkBox_status"
@@ -81,7 +81,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="Completed"
+            android:text="@string/checkbox_completed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_description" />
@@ -94,7 +94,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:onClick="onClickUpdateButton"
-            android:text="update"
+            android:text="@string/button_update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBox_status" />
@@ -107,7 +107,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:onClick="onClickDeleteButton"
-            android:text="delete"
+            android:text="@string/button_delete"
             android:textColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

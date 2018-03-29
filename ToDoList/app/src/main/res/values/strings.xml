@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">To Do List</string>
+    <string name="header_tasks">TASKS</string>
+    <string name="header_task">TASK</string>
+    <string name="header_description">DESCRIPTION</string>
+    <string name="button_add_a_task">ADD A TASK</string>
+    <string name="button_add">ADD</string>
+    <string name="button_update">UPDATE</string>
+    <string name="button_delete">DELETE</string>
+    <string name="checkbox_completed">completed</string>
+    <string name="hint_task">Task</string>
+    <string name="hint_description">Description</string>
 </resources>
