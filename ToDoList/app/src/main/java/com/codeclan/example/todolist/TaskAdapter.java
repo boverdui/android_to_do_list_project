@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,11 +35,15 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
         name.setText(currentTask.getName());
 
-        ImageView image = listItemView.findViewById(R.id.imageView_status);
+        CheckBox statusCheckBox = listItemView.findViewById(R.id.checkBox_status);
 
         if (currentTask.getStatus().equals("completed")) {
 
-            image.setImageResource(R.drawable.check);
+            statusCheckBox.setChecked(true);
+
+        } else {
+
+            statusCheckBox.setVisibility(View.INVISIBLE);
 
         }
 

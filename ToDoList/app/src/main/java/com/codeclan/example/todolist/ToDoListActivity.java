@@ -21,6 +21,7 @@ public class ToDoListActivity extends AppCompatActivity {
 
     @Override
     public void onResume() {
+
         super.onResume();
 
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
