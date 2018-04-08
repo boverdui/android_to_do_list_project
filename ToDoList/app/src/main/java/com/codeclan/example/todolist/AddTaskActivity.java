@@ -4,12 +4,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class AddTaskActivity extends AppCompatActivity {
 
     EditText editName, editDescription;
-    String name, description;
+    RadioButton radioButtonPriority;
+    RadioGroup radioGroupPriority;
+    String name, description, priority;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +24,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
         editName = findViewById(R.id.editText_name);
         editDescription = findViewById(R.id.editText_description);
+        radioGroupPriority = findViewById(R.id.radioGroup_priority);
+        radioGroupPriority.check(R.id.radioButton_low);
 
     }
 
@@ -27,8 +33,10 @@ public class AddTaskActivity extends AppCompatActivity {
 
         name = editName.getText().toString();
         description = editDescription.getText().toString();
+        radioButtonPriority = findViewById(radioGroupPriority.getCheckedRadioButtonId());
+        priority = radioButtonPriority.getText().toString();
 
-        Task task = new Task(name, description);
+        Task task = new Task(name, description, priority);
 
         TaskDbHelper taskDbHelper = new TaskDbHelper(this);
 

@@ -12,45 +12,54 @@ public class Task implements Serializable {
     private String name;
     private String description;
     private String status;
+    private String priority;
 
-    public Task(String name, String description) {
+    public Task(String name, String description, String priority) {
 
         this.name = name;
         this.description = description;
         this.status = "not completed";
+        this.priority = priority;
 
     }
 
-    public Task(Integer id, String name, String description, String status) {
+    public Task(Integer id, String name, String description, String status, String priority) {
 
         this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
+        this.priority = priority;
 
     }
 
     public Integer getId() {
 
-        return id;
+        return this.id;
 
     }
 
     public String getName() {
 
-        return name;
+        return this.name;
 
     }
 
     public String getDescription() {
 
-        return description;
+        return this.description;
 
     }
 
     public String getStatus() {
 
-        return status;
+        return this.status;
+
+    }
+
+    public String getPriority() {
+
+        return this.priority;
 
     }
 

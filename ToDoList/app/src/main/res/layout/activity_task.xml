@@ -12,24 +12,6 @@
         android:layout_height="match_parent"
         tools:context="com.codeclan.example.todolist.TaskActivity">
 
-        <TextView
-            android:id="@+id/textView_task"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center|center_vertical"
-            android:text="@string/header_task"
-            android:textAlignment="gravity"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/editText_name"
             android:layout_width="0dp"
@@ -41,25 +23,7 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_task" />
-
-        <TextView
-            android:id="@+id/textView_description"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center|center_vertical"
-            android:text="@string/header_description"
-            android:textAlignment="gravity"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_name" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editText_description"
@@ -72,7 +36,56 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_description" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_name" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_priority"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_description">
+
+            <RadioButton
+                android:id="@+id/radioButton_high"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.33"
+                android:text="@string/radio_high"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_description" />
+
+            <RadioButton
+                android:id="@+id/radioButton_medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.33"
+                android:text="@string/radio_medium"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_description" />
+
+            <RadioButton
+                android:id="@+id/radioButton_low"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_weight="0.33"
+                android:text="@string/radio_low"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/radioButton3"
+                app:layout_constraintStart_toEndOf="@+id/radioButton"
+                app:layout_constraintTop_toBottomOf="@+id/editText_description" />
+
+        </RadioGroup>
 
         <CheckBox
             android:id="@+id/checkBox_status"
@@ -82,9 +95,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:text="@string/checkbox_completed"
+            android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_description" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup_priority" />
 
         <Button
             android:id="@+id/button_update"

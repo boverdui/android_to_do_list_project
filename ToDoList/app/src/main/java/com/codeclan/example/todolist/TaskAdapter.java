@@ -1,6 +1,7 @@
 package com.codeclan.example.todolist;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,9 +32,18 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
         }
 
-        TextView name = listItemView.findViewById(R.id.textView_name);
+        TextView priority = listItemView.findViewById(R.id.textView_priority);
 
-        name.setText(currentTask.getName());
+        if (currentTask.getPriority().equals("high")) {
+            priority.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.highPriority));
+        }
+        else if (currentTask.getPriority().equals("medium")) {
+            priority.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mediumPriority));
+
+        }
+        else {
+            priority.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.lowPriority));
+        }
 
         CheckBox statusCheckBox = listItemView.findViewById(R.id.checkBox_status);
 
@@ -48,6 +58,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
             statusCheckBox.setVisibility(View.INVISIBLE);
 
         }
+
+        TextView name = listItemView.findViewById(R.id.textView_name);
+
+        name.setText(currentTask.getName());
 
         listItemView.setTag(currentTask);
 

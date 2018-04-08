@@ -28,6 +28,7 @@ public class TaskDbHelper extends DbHelper {
         contentvalues.put(DbContract.Tasks.COL_NAME, task.getName());
         contentvalues.put(DbContract.Tasks.COL_DESCRIPTION, task.getDescription());
         contentvalues.put(DbContract.Tasks.COL_STATUS, task.getStatus());
+        contentvalues.put(DbContract.Tasks.COL_PRIORITY, task.getPriority());
 
         db.insert(DbContract.Tasks.TABLE_TASKS,null, contentvalues);
 
@@ -42,7 +43,8 @@ public class TaskDbHelper extends DbHelper {
                 DbContract.Tasks._ID,
                 DbContract.Tasks.COL_NAME,
                 DbContract.Tasks.COL_DESCRIPTION,
-                DbContract.Tasks.COL_STATUS
+                DbContract.Tasks.COL_STATUS,
+                DbContract.Tasks.COL_PRIORITY
 
         };
 
@@ -69,7 +71,10 @@ public class TaskDbHelper extends DbHelper {
             Integer statusIndex = cursor.getColumnIndex(DbContract.Tasks.COL_STATUS);
             String status = cursor.getString(statusIndex);
 
-            Task task = new Task(id, name, description, status);
+            Integer priorityIndex = cursor.getColumnIndex(DbContract.Tasks.COL_PRIORITY);
+            String priority = cursor.getString(priorityIndex);
+
+            Task task = new Task(id, name, description, status, priority);
 
             tasks.add(task);
 
@@ -103,6 +108,7 @@ public class TaskDbHelper extends DbHelper {
         contentValues.put(DbContract.Tasks.COL_NAME, task.getName());
         contentValues.put(DbContract.Tasks.COL_DESCRIPTION, task.getDescription());
         contentValues.put(DbContract.Tasks.COL_STATUS, task.getStatus());
+        contentValues.put(DbContract.Tasks.COL_PRIORITY, task.getPriority());
 
         String whereClause = DbContract.Tasks._ID + " = ?";
 

@@ -3,4 +3,8 @@
     <color name="colorPrimary">#FF4F00</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4F00</color>
+    <color name="highPriority">#FF0000</color>
+    <color name="mediumPriority">#FFFF00</color>
+    <color name="lowPriority">#00FF00</color>
+    <color name="black">#000000</color>
 </resources>

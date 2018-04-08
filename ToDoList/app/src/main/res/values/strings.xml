@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">ToDo</string>
-    <string name="header_tasks">TASKS</string>
-    <string name="header_task">TASK</string>
-    <string name="header_description">DESCRIPTION</string>
     <string name="button_add_a_task">ADD A TASK</string>
     <string name="button_add">ADD</string>
     <string name="button_update">UPDATE</string>
@@ -10,4 +7,7 @@
     <string name="checkbox_completed">completed</string>
     <string name="hint_task">Task</string>
     <string name="hint_description">Description</string>
+    <string name="radio_high">high</string>
+    <string name="radio_medium">medium</string>
+    <string name="radio_low">low</string>
 </resources>
