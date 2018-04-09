@@ -13,7 +13,8 @@ public class AddTaskActivity extends AppCompatActivity {
     EditText editName, editDescription;
     RadioButton radioButtonPriority;
     RadioGroup radioGroupPriority;
-    String name, description, priority;
+    String name, description, priority_text;
+    Integer priority;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,21 @@ public class AddTaskActivity extends AppCompatActivity {
         name = editName.getText().toString();
         description = editDescription.getText().toString();
         radioButtonPriority = findViewById(radioGroupPriority.getCheckedRadioButtonId());
-        priority = radioButtonPriority.getText().toString();
+        priority_text = radioButtonPriority.getText().toString();
+
+        if (priority_text.equals("high")) {
+
+            priority = 1;
+
+        } else if (priority_text.equals("medium")) {
+
+            priority = 2;
+
+        } else {
+
+            priority = 3;
+            
+        }
 
         Task task = new Task(name, description, priority);
 

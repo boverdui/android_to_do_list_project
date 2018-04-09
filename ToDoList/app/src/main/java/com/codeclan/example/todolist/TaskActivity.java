@@ -20,8 +20,8 @@ public class TaskActivity extends AppCompatActivity {
 
     Task selectedTask;
 
-    Integer id;
-    String name, description, status, priority;
+    Integer id, priority;
+    String name, description, status, priority_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,10 @@ public class TaskActivity extends AppCompatActivity {
 
         radioGroupPriority = findViewById(R.id.radioGroup_priority);
 
-        if (selectedTask.getPriority().equals("high")) {
+        if (selectedTask.getPriority().equals(1)) {
             radioGroupPriority.check(R.id.radioButton_high);
         }
-        else if (selectedTask.getPriority().equals("medium")) {
+        else if (selectedTask.getPriority().equals(2)) {
             radioGroupPriority.check(R.id.radioButton_medium);
         }
         else {
@@ -89,7 +89,21 @@ public class TaskActivity extends AppCompatActivity {
         description = descriptionEditText.getText().toString();
 
         radioButtonPriority = findViewById(radioGroupPriority.getCheckedRadioButtonId());
-        priority = radioButtonPriority.getText().toString();
+        priority_text = radioButtonPriority.getText().toString();
+
+        if (priority_text.equals("high")) {
+
+            priority = 1;
+
+        } else if (priority_text.equals("medium")) {
+
+            priority = 2;
+
+        } else {
+
+            priority = 3;
+
+        }
 
         if (statusCheckBox.isChecked()) {
 

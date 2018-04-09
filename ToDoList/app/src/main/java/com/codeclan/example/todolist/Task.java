@@ -12,9 +12,9 @@ public class Task implements Serializable {
     private String name;
     private String description;
     private String status;
-    private String priority;
+    private Integer priority;
 
-    public Task(String name, String description, String priority) {
+    public Task(String name, String description, Integer priority) {
 
         this.name = name;
         this.description = description;
@@ -23,7 +23,7 @@ public class Task implements Serializable {
 
     }
 
-    public Task(Integer id, String name, String description, String status, String priority) {
+    public Task(Integer id, String name, String description, String status, Integer priority) {
 
         this.id = id;
         this.name = name;
@@ -57,7 +57,7 @@ public class Task implements Serializable {
 
     }
 
-    public String getPriority() {
+    public Integer getPriority() {
 
         return this.priority;
 

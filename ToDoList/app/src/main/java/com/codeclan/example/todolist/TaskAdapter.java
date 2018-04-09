@@ -34,10 +34,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
         TextView priority = listItemView.findViewById(R.id.textView_priority);
 
-        if (currentTask.getPriority().equals("high")) {
+        if (currentTask.getPriority().equals(1)) {
             priority.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.highPriority));
         }
-        else if (currentTask.getPriority().equals("medium")) {
+        else if (currentTask.getPriority().equals(2)) {
             priority.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.mediumPriority));
 
         }

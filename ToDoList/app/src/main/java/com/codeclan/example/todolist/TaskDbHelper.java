@@ -48,9 +48,11 @@ public class TaskDbHelper extends DbHelper {
 
         };
 
+        String orderBy = DbContract.Tasks.COL_PRIORITY;
+
         Cursor cursor = db.query(
 
-                DbContract.Tasks.TABLE_TASKS, projection,null,null,null,null,null
+                DbContract.Tasks.TABLE_TASKS, projection,null,null,null,null,orderBy
 
         );
 
@@ -72,7 +74,7 @@ public class TaskDbHelper extends DbHelper {
             String status = cursor.getString(statusIndex);
 
             Integer priorityIndex = cursor.getColumnIndex(DbContract.Tasks.COL_PRIORITY);
-            String priority = cursor.getString(priorityIndex);
+            Integer priority = cursor.getInt(priorityIndex);
 
             Task task = new Task(id, name, description, status, priority);
 
