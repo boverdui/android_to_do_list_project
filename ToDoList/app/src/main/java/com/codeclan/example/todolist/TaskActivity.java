@@ -1,6 +1,8 @@
 package com.codeclan.example.todolist;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -72,15 +74,39 @@ public class TaskActivity extends AppCompatActivity {
 
     public void onClickDeleteButton(View view) {
 
-        TaskDbHelper taskDbHelper = new TaskDbHelper(this);
-
-        taskDbHelper.deleteTask(selectedTask);
-
-        Toast.makeText(this, "Task deleted", Toast.LENGTH_LONG).show();
-
-        finish();
+        confirmDialog();
 
     }
+
+    private void confirmDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Are you sure you want to delete this task?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                TaskDbHelper taskDbHelper = new TaskDbHelper(getApplicationContext());
+                taskDbHelper.deleteTask(selectedTask);
+                Toast.makeText(getApplicationContext(), "Task deleted", Toast.LENGTH_LONG).show();
+                finish();
+
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+                Toast.makeText(getApplicationContext(), "Task not deleted", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        builder.show();
+    }
+
 
     public void onClickUpdateButton(View view) {
 
