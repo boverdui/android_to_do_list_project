@@ -18,4 +18,6 @@ You are required to write an Android app which will allow the user to maintain a
 * Allow the user to prioritise and/or categorise tasks.
 * Use the calendar to set due dates on tasks.
 
-### Screen shots of finished product
+### Screenshots of the Finished Product:
+
+![Alt text](ToDoList/screenshots/todo.jpg?raw=true)
