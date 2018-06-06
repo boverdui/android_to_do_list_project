@@ -1,6 +1,6 @@
 # Java / Android 
 
-## Goal: 
+## Goal
 
 Practice what we learned in the Java / Android weeks and research how to persist data.
 
@@ -18,6 +18,6 @@ You are required to write an Android app which will allow the user to maintain a
 * Allow the user to prioritise and/or categorise tasks.
 * Use the calendar to set due dates on tasks.
 
-### Screenshots of the Finished Product:
+## Screenshots of the finished product
 
 ![Alt text](ToDoList/screenshots/todo.jpg?raw=true)
